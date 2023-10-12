@@ -2,34 +2,34 @@
 
 
 //the date is 9/24/2023 and i just tried to fix my code, i curretnly have no idea why it dosent work. it should be working.
+
+
+//the date is 10/11/2023  i just attempted to make it work again, but it still dosent pass the test. my only conclusion is 
+// that something dosent work how i think it works, but i know it should work
+
 function divideAndConquerSum(a) {
     console.log("the array is " + a);
-    if(a.length == 0)
-        return 0;
-    if(a.length == 1)
-        return a[0];
-    if(a.length == 2)
-        return a[0]+a[1];
-    b = conquer(a);
-    console.log("ended answer is " + b);
-    return a;
-    
-        
+    sum = conquer(a, Math.ceil(a.length/3))
+    console.log("the answer is " + sum);
+    return sum;    
 }
 
-function conquer(a) {
-    const b = Math.floor(a.length/3);
-    
-    if(a.length >= 3 && b >= 1){
-        d = conquer(a.slice(0,b));
-        e = conquer(a.slice(b,b*2));
-        f = conquer(a.slice(b*2));
-        console.log("sum is " + d + " " + e + " " +f);
-        return d+e+f;
-    }
-    if(a.length == 2)
-        return a[0]+a[1];
+function conquer(a, b) {
+    if(a.length == 0)
+        return 0
     if(a.length == 1)
-        return a[0];
-    return 0;
+        return a[0]
+    if(a.length == 2)
+        return a[0]+a[1]
+    
+    
+    c = conquer(a.slice(0,b))
+    if(a.length%3 == 1){
+        d = conquer(a.slice(b,(b*2)-1), Math.ceil(a.length/3))
+        e = conquer(a.slice((b*2)-1), Math.ceil(a.length/3))
+    }else{
+        d = conquer(a.slice(b,b*2), Math.ceil(a.length/3))
+        e = conquer(a.slice(b*2), Math.ceil(a.length/3))
+    }
+    return c+d+e
 }
