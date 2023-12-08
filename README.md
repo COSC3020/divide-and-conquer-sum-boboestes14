@@ -26,3 +26,8 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+The runtime of my algorithm should be $\Theta$(n). Which makes sense because it
+adds n items once. The recurence relation is $T(n) = {(1, n\geq 2; 3t(\frac{n}{3}), else)} $
+its easy to solve for you just start off by having $3^i t(\frac{n}{3^i})$ we can set i to
+$ log_3(n) $ which turns the equation into  $(n) t(1)$ which just becomes $\Theta$(n).
